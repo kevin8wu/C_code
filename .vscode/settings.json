@@ -1,9 +1,8 @@
 {
     "files.associations": {
-        "ios": "c",
-        "xiosbase": "c",
-        "iosfwd": "c",
-        "xstring": "c",
-        "xutility": "c"
+        "array": "c",
+        "string_view": "c",
+        "initializer_list": "c",
+        "utility": "c"
     }
 }

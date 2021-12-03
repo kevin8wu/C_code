@@ -48,6 +48,19 @@ int main()
     avg=(float)total/count; //type casting
     printf("%f\n",avg);
 
+    //typedef for fundamental data type
+    typedef int km_per_hour;    //typedef BaseType NewType
+    km_per_hour current_speed;  //"km_per_hour" is synonymous with "int"
+
+    //typedef for array data type
+    typedef char arrType[6];    //typedef BaseType NewType [arrSize]
+    arrType arr={1,2,3,4,5,6};  //same as: char arr[6]={1,2,3,4,5,6}
+    arrType *pArr;              //same as: char (*pArr)[6]
+
+    //typedef for pointer data type
+    typedef int *intptr;        //typdef BaseType* NewType
+    intptr ptr;                 //same as: int *ptr
+
     /******************************************/
     //input & output
 

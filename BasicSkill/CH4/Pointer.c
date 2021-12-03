@@ -20,6 +20,25 @@ int divide(int num1,int num2)
     else{return 0;}
 }
 
+int choosing(float arg1, int arg2)
+{
+    return arg2;
+}
+
+int call_a_func(int (*call_this)(float, int))
+{
+    int output = call_this(5.5, 7);
+    return output;
+}
+
+typedef int (*ChoosingFunc)(float, int);
+
+int call_a_func_by_typedef(ChoosingFunc call_this)
+{
+    int output = call_this(5.5, 7);
+    return output;
+}
+
 void * square(const void *num) //void type pointer as argument
 {
     int result;
@@ -115,6 +134,10 @@ int main()
     printf("%d\n",op[1](10,2));
     printf("%d\n",op[2](10,2));
     printf("%d\n",op[3](10,2));
+
+    int final_result1 = call_a_func(choosing);
+    int final_result2 = call_a_func_by_typedef(choosing); //typedef of function pointer for arg
+    printf("%d %d\n", final_result1, final_result2);
 
     void *ptr; //void type pointer can refer to any address
     int x=33;
