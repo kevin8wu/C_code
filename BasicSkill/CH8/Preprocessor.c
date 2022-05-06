@@ -53,12 +53,12 @@ int main()
 
     /******************************************/
 
-    /*the # operator*/
+    /*the # operator in definition*/
         //it called stringification or stringizing operator
         //convert a parameter to string constant
         //ignore white space on both sides
         //recognize escape chars
-    /*the ## operator*/
+    /*the ## operator in definition*/
         //it called token pasting operator
         //it append(past) token together as name of variable
     #define TO_STR(x) #x

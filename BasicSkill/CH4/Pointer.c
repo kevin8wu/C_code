@@ -39,11 +39,19 @@ int call_a_func_by_typedef(ChoosingFunc call_this)
     return output;
 }
 
-void * square(const void *num) //void type pointer as argument
+void* square(void *num) //void type pointer as argument
 {
-    int result;
+    static int result;
     result=(*(int *)num)*(*(int *)num);
-    return result;
+    return &result;
+}
+
+void swap(void* A, void* B, int size)
+{
+    char buffer[size];
+    memcpy(buffer, A, size);
+    memcpy(A, B, size);
+    memcpy(B, buffer, size);
 }
 
 int compare(const void *elem1,const void *elem2)
@@ -57,9 +65,13 @@ int compare(const void *elem1,const void *elem2)
 
 int main()
 {
+    printf("test= %s\n","test");
     char str1[6]="hello"; //double quotation for string
+    printf("str1= %s\n",str1);
     char str2[]={'w','o','r','l','d','\0'}; //single quotation and \0 for string
+    printf("str2= %s\n",str2);
     char *str="stuff"; //string pointer
+    printf("str= %s\n",str);
 
     /*scanf() stop reading when reaching a space, gets() stop when reaching newline*/
     char full_name[50];
@@ -93,10 +105,10 @@ int main()
     char c='c';
     printf("strlen is %d\n",strlen(s1)); //get length of a string, not including NULL
     strcat(s1,s2); //merge s2 to the end of s1 and return pointer to s1
+    printf("%s%s\n",s1,s2);
+    strcpy(s1,s2); //copy s2 to s1, s1 and s2 shall not overlap, size of s1 shall bigger than s2
     printf("%s\n",s1);
-    strcpy(s1,s2); //copy s2 to s1
-    printf("%s\n",s1);
-    printf("%d\n",strcmp(s1,s2)); // compare two strings, return 0 when s1 equal s2
+    printf("%d\n",strcmp(s1,s2)); // compare two strings, return 0 when s1 equal s2, return >0 when s1 bigger than s2
     printf("0X %x\n",strchr(s1,c)); //return char pointer to the first occurrence of c in s1 or NULL if not
     printf("0X %x\n",strstr(s1,s2)); //return char pointer to the first occurrence of s2 in s1 or NULL if not 
     /*
@@ -112,20 +124,21 @@ int main()
         "ticket"
     };
     printf("%c\n",trip[2][3]);
-    char *trips[]= //multi-dimension of pointer for string, needed []
+    char (*atrip)[15]=trip; //a pointer for multi-dimension of string
+    printf("%c\n",*(*(atrip+2)+3));
+    char *trips[]= //multi-dimension of pointer for string, same as char* (trips[])
     {
         "suitcase",
         "passport",
         "ticket"
     };
-    for(int i=0;i<3;i++){printf("%s\n",trips[i]);}
-
+    for(int i=0;i<3;i++){printf("%s\n",trips[i]);} //each element shall be a pointer
 
     void (*funptr) (int); //function pointer declare
     funptr=say_hello; //function pointer assign
     funptr(3); //function pointer call
     
-    int (*op[4]) (int,int); //array of function pointer declare
+    int (*op[4]) (int,int); //array of function pointer declare, AKA int(*(op[4]))(int,int)
     op[0]=add;
     op[1]=subtract;
     op[2]=multiply;
@@ -149,7 +162,11 @@ int main()
     printf("%f\n",*((float *)ptr));
     ptr=&z;
     printf("%c\n",*((char *)ptr));
-    printf("x squared is %d\n",square(&x)); //accept any type of data returned
+    printf("x squared is %d\n",*((int *)square(&x))); //accept any type of data returned
+
+    int A=24, B=2;
+    swap(&A, &B, sizeof(int)); //use memcpy to assign related data
+    printf("A=%d, B=%d\n",A,B);
 
     int arr[5]={52,23,56,19,4};
     int nums,width;

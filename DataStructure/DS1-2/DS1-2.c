@@ -91,13 +91,13 @@ int gcd_recursive(int M,int N)
     if((M%N)==0) return N;
     else return gcd_recursive(N,M%N);
 }
-
+//mylti-dimention as argument
 void matrix_multiply(int m,int n,int p,int A[m][n],int B[n][p])
 {
     int C[m][p];
     for(int i=0;i<m;i++)
     {
-        for(int j=0;j<p;n++)
+        for(int j=0;j<p;j++)
         {
             C[i][j]=0;
             for(int k=0;k<n;k++)

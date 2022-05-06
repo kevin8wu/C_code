@@ -150,12 +150,14 @@ int main()
         //usually set in global variable
     /*errno*/
         //store error information for error code
+        //EDOM 33: error when domain is out of range
+        //ERANGE 34: error when range is out of memory
     /*stderr*/
         //file stream "standard error output" for error code
-    /*perror*/
-        //get more message for error code
     /*strerror*/
         //get more message for error code by string.h
+    /*perror*/
+        //get more message for error code
     #if 0
     errno=0; //set 0 before calling lib func
     fptr=fopen("C:\\Users\\Kevin\\Desktop\\nonexit.txt","r");
@@ -167,12 +169,7 @@ int main()
         exit(EXIT_FAILURE);
     }
     fclose(fptr);
-    #endif
-    /*EDOM*/
-        //33: error when domain is out of range
-    /*ERANGE*/
-        //34: error when range is out of memory
-    #if 0
+   
     float result;
     errno=0;
     result=sqrt(-5.0);

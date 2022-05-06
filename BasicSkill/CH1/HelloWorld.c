@@ -43,10 +43,22 @@ int main()
     
     float avg;
     int total=23,count=4;
-    avg=total/count;
+    int result_num;
+    avg=total/count; //5.00
+    printf("%f\n",avg); 
+    avg=(float)total/count; //type casting, 5.75
     printf("%f\n",avg);
-    avg=(float)total/count; //type casting
+    total=-23;
+    avg=total/count; //-5.00
+    printf("%f\n",avg); 
+    avg=(float)total/count; //type casting, -5.75
     printf("%f\n",avg);
+    avg=12.45;
+    result_num=avg; //type casting, 12
+    printf("%d\n", result_num);
+    avg=-12.45;
+    result_num=avg; //type casting, -12
+    printf("%d\n", result_num);
 
     //typedef for fundamental data type
     typedef int km_per_hour;    //typedef BaseType NewType
@@ -90,6 +102,7 @@ int main()
     printf("\n");
     */
 
+    /*
     printf("plz enter a int >\n");
     int intnum;
     scanf("%d",&intnum); //scan matching input & store in addr
@@ -112,6 +125,7 @@ int main()
     char texts[10];
     scanf("%2d %d %*f %5s",&x,&y,texts); //%[*][-][max_width].[precision]type ; * for ignored ; - for left align
     printf("%d %d %s",x,y,texts); //%e for scientific notation ; %x for hex
+    */
 
     /******************************************/
     
