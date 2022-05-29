@@ -132,3 +132,67 @@ int main()
 
     return 0;
 }
+
+#if 0
+# gcc options
+
+gcc [option] filename
+
+>option
+-E : output .i file; preprocess only; no compile, assemble, link; 
+-S : output .s file; compile only; no assemble, link;
+-c : output .o file; compile and assemble only; no link;
+-g : compile and assembly with error infor by GDB
+-o [filename] : place output into [filename]
+-ansi : program by ansi c standard
+-shared : create a shared library
+-D[macro] : enable defined macro
+-D[marco=defn] : make defined macro as "defn"
+-U[macro] : disable defined macro
+
+-Wp,option : pass options to preprocessor
+-Wa,option : pass options to assembler
+-Wl,option : pass options to linker
+-I : 追加include檔案的搜尋路徑
+-L : 追加library檔案的搜尋路徑
+-l : 指定連結的函式庫
+-Wall : display all warnning infor
+-w : disable all warnning infor
+-O0 : no any optimization
+-O1 : initial optimization
+-O2 : advanced optimization
+
+build-M1:
+$ gcc HelloWorld.c -o HelloWorld
+build-M2:
+$ gcc -E hello.c -o hello.i //preprocess
+$ gcc -S hello.i -o hello.s //compile
+$ gcc –c hello.s –o hello.o //compile & assemble
+$ gcc hello.o -o hello.out  //compile & assemble & link   
+
+shared-build:
+$ gcc -c -Wall -Werror -fPIC Cfile.c  
+$ gcc -shared -o libCfile.so Cfile.o 
+
+
+# the relationship of files
+
+file.c   // c file that has been edited from IDE (source code)
+file.i   // i file that has been preprocessed from c file
+file.s   // s file that has been compiled from i file (assembly code)
+file.o   // o file that has been assembled from s file
+file.a   // a file that has been archived from o file
+file.out // out file that has been linked from a file
+
+
+# common standard output format (ELF)
+
+relocatable:    .a   (linux); .a   (embeded); .lib (windows)
+shared library: .so  (linux); .bin (embeded); .dll (windows)
+executable:     .out (linux); .axf (embeded); .exe (windows)
+
+    ## .bin is kind of .hex as image file to execute or burn into memory 
+	## .axf is kind of executable file like .bin, but including debug infor
+    ## .elf have different ABI (application binary interface)
+        like data type, size, calling convention, endian, o32(MIPS)/eabi(ARM)
+#endif
