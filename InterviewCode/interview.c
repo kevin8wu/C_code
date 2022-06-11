@@ -12,32 +12,7 @@
 
 //2020/02/07 瑞昱
 
-/*2020/02/18 聯發科
-struct point
-{
-    int x,y;
-};
-struct circle
-{
-    int r;
-    struct point center;
-};
-void printCircle(struct circle A)
-{
-    int px,py;
-    int dx=A.center.x;
-    int dy=A.center.y;
-    for(int i=0;i<=A.r;i++)
-    {
-        px=i;
-        py=sqrt(A.r*A.r-i*i);
-        printScreen(dx+px,dy+py);
-        printScreen(dx+px,dy-py);
-        printScreen(dx-px,dy-py);
-        printScreen(dx-px,dy+py);
-    }
-}
-*/
+#include "interview_mtk.h"
 
 int main()
 {
@@ -89,24 +64,25 @@ int main()
    
     //2020/01/07 松翰
 
-#if 1 //2020/01/09 奕力
+#if 0 //2020/01/09 奕力
     char s[]="0113256";
-    char * ps=s;
-    printf("%c ",*ps++);
-    printf("%c ",*(ps++));
-    printf("%c ",(*ps)++);
-    printf("%c ",*++ps);
-    printf("%c ",*(++ps));
-    printf("%c ",++*ps);
-    printf("%c ",++(*ps));
-    printf("%s\n",s);
+    char* ps=s;
+    printf("%c ",*ps++); //like *(ps++), 0
+    printf("%c ",*(ps++)); //1
+    printf("%c ",(*ps)++); //1
+    printf("%c ",*++ps); //like *(++ps), 3
+    printf("%c ",*(++ps)); //2
+    printf("%c ",++*ps); //2+1
+    printf("%c ",++(*ps)); //(2+1)+1
+    printf("%s\n",s); //0123456
     for(int i=0;i<10;i++)
     {
         if(i>7)break;
         else if(i==2)continue;
         else if(i%3==0)continue;
-        else printf("%d\n",i);
+        else printf("%d\t",i);
     }
+    printf("\n");
     int xa[5]={95,33,54,47,12};
     printf("%d\n",find_second_max(xa,5));
     printf("%d\t%d\t%d\n",31/2,31%4,31*8);
@@ -131,7 +107,10 @@ int main()
 
     //2020/02/07 瑞昱
 
-    //2020/02/18 聯發科
+#if 0 //2020/02/18 聯發科
+    struct circle A={5,{1,1}};
+    printCircle(A);
+#endif
 
     return 0;
 }
