@@ -36,9 +36,9 @@ int main()
     char aaa[10]={0,1,2,3,4,5,6,7,8,9};
     char *p;
     p=aaa;
-    printf("%d\n",(UIN8)*(p+8));
-    printf("%d\n",(UIN8)*p);
-    printf("%d\n",(UIN16)*p);
+    printf("%d\n",(UIN8)*(p+8)); //8
+    printf("%d\n",(UIN8)*p); //0
+    printf("%d\n",(UIN16)*p); //0
     int Array[5]={-1,2,3,-4,5};
     reverseArray(Array);
     printArray(Array);
@@ -107,9 +107,81 @@ int main()
 
     //2020/02/07 瑞昱
 
-#if 0 //2020/02/18 聯發科
+#if 1 //2020/02/18 聯發科
     struct circle A={5,{1,1}};
     printCircle(A);
+
+    if(isMult3(7))
+    {
+        printf("multiple of 3\n");
+    }
+    else
+    {
+        printf("not multiple of 3\n");
+    }
+
+    union udata udata1;
+    udata1.dataI=3406;
+    printf("%d\n",udata1.dataC[0]);
+
+    int input_arr[10]={2,3,3,3,3,7,5,1,2,7};
+    for(int i=0;i<10;i++)
+    {
+        printf("input %d median %f\n",input_arr[i],get_median(input_arr[i]));
+        struct queue_m* curr=head;
+        while(curr!=NULL)
+        {
+            printf("%d ",curr->data);
+            curr=curr->next;
+        }
+        printf("\n");
+    }
+
+    struct node_size_test N;
+    printf("%d %d %d\n",sizeof(int),sizeof(char),sizeof(struct node_size_test)); //4 1 8
+    printf("%d\n",sizeof(N)); //using sizeof to estimate size
+    printf("%x %x\n", &N, &N+1); //0x61fdc8 0x61fdd0
+    printf("%d\n",size_estimation(N)); //using address to estimate size
+
+    struct reverse_list* rev_curr=NULL;
+    for(int i=0;i<3;i++)
+    {
+        if(rev_curr==NULL)
+        {
+            rev_curr=(struct reverse_list*)malloc(sizeof(struct reverse_list));
+            rev_curr->data=i+1;
+            rev_curr->next=NULL;
+            reverse_head=rev_curr;
+        }
+        else
+        {
+            struct reverse_list* new=malloc(sizeof(struct reverse_list));
+            new->data=i+1;
+            new->next=NULL;
+            rev_curr->next=new;
+            rev_curr=new;
+        }
+    }
+    rev_curr=reverse_head;
+    while(rev_curr!=NULL)
+    {
+        printf("%d ",rev_curr->data);
+        rev_curr=rev_curr->next;
+    }
+    printf("\n");
+    reverse_linked_list(); //modify next ptr for reversing
+    rev_curr=reverse_head;
+    while(rev_curr!=NULL)
+    {
+        printf("%d ",rev_curr->data);
+        rev_curr=rev_curr->next;
+    }
+    printf("\n");
+
+    int mtk_arr[]={1,2,3};
+    printf("%x %d %x %d\n",mtk_arr, *mtk_arr, mtk_arr+1, *(mtk_arr+1));
+    //&arr+1 indicate the next address of array in size of array!!!
+    printf("%x %x\n",&mtk_arr, &mtk_arr+1);
 #endif
 
     return 0;

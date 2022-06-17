@@ -18,3 +18,10 @@ char* strrevs(char* s)
     }  
     return(s);  
 } 
+
+void swap_by_bitwise(int *a, int *b)
+{
+    *a = *a ^ *b;
+    *b = *a ^ *b; //*b = (*a ^ *b) ^ *b = *a;
+    *a = *a ^ *b; //*a = (*a ^ *b) ^ (*a) = (*b ^ *a) ^*a = *b 
+}
