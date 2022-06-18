@@ -10,7 +10,7 @@
 
 //2020/01/07 松翰
 
-//2020/02/07 瑞昱
+#include "interview_realtek.h"
 
 #include "interview_mtk.h"
 
@@ -106,6 +106,9 @@ int main()
 #endif
 
     //2020/02/07 瑞昱
+#if 1
+
+#endif
 
 #if 1 //2020/02/18 聯發科
     struct circle A={5,{1,1}};
