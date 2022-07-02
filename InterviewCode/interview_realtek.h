@@ -5,25 +5,23 @@ struct RQ1
     struct RQ1* next;
 };
 
-struct RQ1* RQ1_head=NULL;
-
-void insert_before_max(struct RQ1* list_node, int value)
+void insert_before_max(struct RQ1** list_node, int value)
 {
-    if(list_node==NULL)
+    if(*list_node==NULL)
     {
         struct RQ1* node=malloc(sizeof(struct RQ1));
         node->data=value;
         node->next=NULL;
-        list_node=node;
+        *list_node=node;
     }
     else
     {
-        struct RQ1* curr=list_node;
+        struct RQ1* curr=*list_node;
         struct RQ1* prev=NULL;
         struct RQ1* before_max_node=NULL;
-        int max_data=list_node->data;
+        int max_data=(*list_node)->data;
 
-        while(list_node!=NULL)
+        while(curr!=NULL)
         {
             if(curr->data>max_data)
             {
@@ -46,8 +44,8 @@ void insert_before_max(struct RQ1* list_node, int value)
         {
             struct RQ1* node=malloc(sizeof(struct RQ1));
             node->data=value;
-            node->next=list_node;
-            list_node=node;
+            node->next=*list_node;
+            *list_node=node;
         }
     }
 }

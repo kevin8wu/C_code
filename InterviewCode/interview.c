@@ -107,10 +107,36 @@ int main()
 
     //2020/02/07 瑞昱
 #if 1
-
+    struct RQ1* RQ1_head=NULL;
+    struct RQ1* RQ1_curr=RQ1_head;
+    int inputRQ1[4]={1,5,2,7};
+    for(int i=0;i<4;i++)
+    {
+        struct RQ1* input_node=malloc(sizeof(struct RQ1));
+        input_node->data=inputRQ1[i];
+        input_node->next=NULL;
+        if(RQ1_curr==NULL)
+        {
+            RQ1_curr=input_node;
+            RQ1_head=RQ1_curr;
+        }
+        else
+        {
+            RQ1_curr->next=input_node;
+            RQ1_curr=input_node;
+        }
+    }
+    insert_before_max(&RQ1_head, 3);
+    RQ1_curr=RQ1_head;
+    while(RQ1_curr!=NULL)
+    {
+        printf("%d ", RQ1_curr->data);
+        RQ1_curr=RQ1_curr->next;
+    }
+    printf("\n");
 #endif
 
-#if 1 //2020/02/18 聯發科
+#if 0 //2020/02/18 聯發科
     struct circle A={5,{1,1}};
     printCircle(A);
 
@@ -185,6 +211,9 @@ int main()
     printf("%x %d %x %d\n",mtk_arr, *mtk_arr, mtk_arr+1, *(mtk_arr+1));
     //&arr+1 indicate the next address of array in size of array!!!
     printf("%x %x\n",&mtk_arr, &mtk_arr+1);
+    int* mtk_ptr=mtk_arr;
+    //&ptr indicate the prev address of array in size of array!!!
+    printf("%x %x %x\n",mtk_ptr, *mtk_ptr, &mtk_ptr);
 #endif
 
     return 0;
