@@ -14,6 +14,8 @@
 
 #include "interview_mtk.h"
 
+#include "interview_infineon.h"
+
 int main()
 {
 #if 0 //2019/12/18 永擎
@@ -106,7 +108,7 @@ int main()
 #endif
 
     //2020/02/07 瑞昱
-#if 1
+#if 0
     struct RQ1* RQ1_head=NULL;
     struct RQ1* RQ1_curr=RQ1_head;
     int inputRQ1[4]={1,5,2,7};
@@ -216,8 +218,31 @@ int main()
     printf("%x %x %x\n",mtk_ptr, *mtk_ptr, &mtk_ptr);
 #endif
 
+#if 1 //2022/8/5 英飛凌
+/*
+- heap allocation and memory relationship
+- linked list expression for timer
+- linked list dequeue for timer
+- n step + 2*m step = 50 step
+- strstr to find out the repeated string
+- display the value from 4 different data type when increasing 32
+- find the longest sub-array in order for specific array
+*/
+    steps_method(50);
+
+    add32();
+
+    int arr[]={1,5,3,2,6,7,9};
+    int* result=longestSubArray(arr, 7);
+#endif
+
     return 0;
 }
 
+//mediatek MM camera software
+//ynn.wu@mediatek.com
 
+//infineon CCSITB CSS ICW SW3
+//0927-772-139
+//ray.yu@infineon.com
 
