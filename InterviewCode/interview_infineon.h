@@ -12,6 +12,31 @@ void steps_method(int max_step)
     printf("you got %d different ways for %d steps\n", count, max_step);
 }
 
+int missingNumber(int* nums, int numSize)
+{
+    int result;
+    
+    for(int i=0;i<=numSize;i++)
+    {
+        int check=0;
+        for(int j=0;j<numSize;j++)
+        {
+            if(nums[j]==i)
+            {
+                check=1;
+                break;
+            }
+        }
+        if(check==0)
+        {
+            result=i;
+            break;
+        }
+    }
+
+    return result;
+}
+
 void add32()
 {
     unsigned char a = 0;

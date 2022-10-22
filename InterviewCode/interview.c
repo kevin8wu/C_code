@@ -230,6 +230,10 @@ int main()
 */
     steps_method(50);
 
+    int numberInput[3]={0,3,1};
+    int missing=missingNumber(numberInput, sizeof(numberInput)/sizeof(int));
+    printf("%d\n",missing);
+
     add32();
 
     int arr[]={1,5,3,2,6,7,9};
@@ -246,3 +250,5 @@ int main()
 //0927-772-139
 //ray.yu@infineon.com
 
+//NXP C&S bluetooth controller - automobile
+//aldrich.hung@nxp.com
