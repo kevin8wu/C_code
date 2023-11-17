@@ -16,8 +16,8 @@ void plusOne(int * a,int len);
 
 int main()
 {
-    unsigned int a=-2;
-    if(a>=0){printf("YES\n");}
+    unsigned int a = -2;
+    if(a>=0){printf("YES\n");} //YES
     printf("%d\n",a); //-2
     /*
         unsigned int only support 0~4294967295(2^32-1)
