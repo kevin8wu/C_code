@@ -2,68 +2,155 @@
 #include <stdlib.h>
 #include <string.h>
 
-typedef struct
-{
-    int size;
-    char * infor;
-}record;
+#define METHOD1
 
-char * convert(char * s, int numRows)
+#if defined(METHOD1)
+struct node
+{
+    char data;
+    struct node* next;
+};
+
+struct list
+{
+    struct node* node_head;
+    struct node* node_tail;
+    struct list* next;
+    struct list* prev;
+};
+
+char* convert(char* s, int numRows)
 {
     //determine for special conditions
     if(s==NULL){return s;}
     if(numRows<=1 || numRows>=strlen(s)){return s;}
 
     //init a container to record each row
-    record *records;
-    records=calloc(numRows,sizeof(record));
+    struct list* result = NULL;
     for(int i=0; i<numRows; i++)
     {
-        records[i].size=1;
-        records[i].infor=malloc(sizeof(char));
-        memset(records[i].infor, 0, records[i].size);
-    }
+        struct list* new_list = malloc(sizeof(struct list));
+        new_list->node_head = NULL;
+        new_list->node_tail = NULL;
+        new_list->next = NULL;
+        new_list->prev = NULL;
 
-    for(int i=0,num=0,dir=-1;i<strlen(s);i++)
-    {
-        //determine if memory size is full
-        if(records[num].infor[records[num].size-1] != 0)
+        if(result == NULL)
         {
-            records[num].infor=realloc(records[num].infor,records[num].size+1);
-            if(records[num].infor != NULL)
+            result = new_list;
+        }
+        else
+        {
+            struct list* curr_list = result;
+            while(curr_list->next != NULL)
             {
-                records[num].size += 1;
-            }       
+                curr_list = curr_list->next;
+            }
+            curr_list->next = new_list;
+            new_list->prev = curr_list;
         }
-
-        //assign dedicated char data
-        records[num].infor[records[num].size-1]=s[i];
-
-        //determine if need to change the direction
-        if(num==0 || num==numRows-1)
-        {
-            if(dir==1){dir=-1;}
-            else{dir=1;}
-        }
-        num+=dir;
     }
 
-    //init a container to record final result
-    int result_size=0;
-    char * result=(char *)malloc(strlen(s));
-    memset(result,0,strlen(s)); 
-
-    for(int i=0;i<numRows;i++)
+    //start to put char in each row
+    struct list* update_list = result;
+    for(int i=0, dir=1; i<strlen(s); i++)
     {
-        //strcat(result,records[i].infor);
-        memcpy(result+result_size, records[i].infor, records[i].size);
-        result_size+=records[i].size;
+        struct node* new_node = malloc(sizeof(struct node));
+        new_node->data = s[i];
+        new_node->next = NULL;
+
+        if(update_list->node_head != NULL)
+        {
+            update_list->node_tail->next = new_node;
+            update_list->node_tail = new_node;
+        }
+        else
+        {
+            update_list->node_head = new_node;
+            update_list->node_tail = new_node;
+        }
+
+        if(update_list->next == NULL)
+        {
+            update_list = update_list->prev;
+            dir = 0;
+        }
+        else if(update_list->prev == NULL)
+        {
+            update_list = update_list->next;
+            dir = 1;
+        }
+        else
+        {
+            if(dir == 1)
+            {
+                update_list = update_list->next;
+            }
+            else
+            {
+                update_list = update_list->prev;
+            }
+        }
     }
 
-    free(records);
+    //resort result
+    char* result_string=(char*)malloc(sizeof(char)*(strlen(s)+1));
+    memset(result_string,0,(strlen(s)+1));
+    unsigned int index = 0;
+    struct list* input_list = result;
+    while(input_list != NULL)
+    {
+        struct node* input_node = input_list->node_head;
+        while(input_node != NULL)
+        {
+            result_string[index] = input_node->data;
+            index++;
 
-    return result;
+            struct node* tmpNode = input_node;
+            input_node = input_node->next;
+            free(tmpNode);
+        }
+
+        struct list* tmpList = input_list;
+        input_list = input_list->next;
+        free(tmpList);
+    }
+    result_string[index] = '\0';
+
+    for(int i = 0; i<strlen(s); i++)
+    {
+        printf("%c ", result_string[i]);
+    }
+    printf("\n");
+
+    return result_string;
 }
+#else
+char* convert(char* s, int numRows)
+{
+    if(strlen(s) == 1 || numRows == 1)
+        return s;
+    int step = (numRows-1)*2, rIndex = 0,strl = strlen(s);
+    char *r = (char *)malloc((strl+1)*sizeof(char));
+    r[strl] = '\0';
+    for(int i = 0;i<numRows;i++){
+        int jump = 0;
+        while(jump<strl){
+            if(jump+i<strl && i!=(numRows-1)){
+                r[rIndex] = s[jump+i];
+                rIndex++;
+            }
+            jump+=step;
+            if(jump-i<strl && i!=0){
+                r[rIndex] = s[jump-i];
+                rIndex++;
+            }
+        }
+    }
+    
+    return r;
+}
+#endif
 
 /*
 class Solution 
@@ -96,9 +183,13 @@ public:
 
 int main()
 {
-    char * input="PAYPALISHIRING";
+    char* input = "PAYPALISHIRING";
+    printf("%s\n",convert(input, 3));
 
-    printf("%s\n",convert(input,3));
-    
+    printf("%s\n",convert(input, 4));
+
+    input = "A";
+    printf("%s\n",convert(input, 1));
+
     return 0;
 }

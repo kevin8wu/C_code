@@ -149,6 +149,10 @@ gcc [option] filename
 -D[macro] : enable defined macro
 -D[marco=defn] : make defined macro as "defn"
 -U[macro] : disable defined macro
+-fsanitize=address : a fast memory error detector from google
+-fsanitize=thread -pthread : data race detector from google 
+-fsanitize=undefined : a fast undefined behavior detector from google 
+-fsanitize=leak : memory leak detector from google 
 
 -Wp,option : pass options to preprocessor
 -Wa,option : pass options to assembler
