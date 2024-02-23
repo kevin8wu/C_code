@@ -175,8 +175,12 @@ $ gcc –c hello.s –o hello.o //compile & assemble
 $ gcc hello.o -o hello.out  //compile & assemble & link   
 
 shared-build:
-$ gcc -c -Wall -Werror -fPIC Cfile.c  
-$ gcc -shared -o libCfile.so Cfile.o 
+$ gcc -c -Wall -Werror -fPIC Cshared.c  
+$ gcc -shared -o libCshared.so Cshared.o 
+$ gcc -l Cshared -o Crunner.out Crunner.c 
+$ ldd Crunner.out //show the shared object that program uses
+$ man dlopen //check another way to link shared library
+$ man dlsym //check another way to get specific symbol in shared library
 
 
 # the relationship of files
