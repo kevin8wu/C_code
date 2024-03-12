@@ -159,7 +159,7 @@ gcc [option] filename
 -Wl,option : pass options to linker
 -I : 追加include檔案的搜尋路徑
 -L : 追加library檔案的搜尋路徑
--l : 指定連結的函式庫
+-l : 指定動態連結的函式庫
 -Wall : display all warnning infor
 -w : disable all warnning infor
 -O0 : no any optimization
