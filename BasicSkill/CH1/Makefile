@@ -1,5 +1,5 @@
 # A Makefile for HelloWorld
-PROJECT_NAME= HelloWorld
+PROJECT_NAME = HelloWorld
 
 # Include Makefile
 ## include Makefil.include.gen
