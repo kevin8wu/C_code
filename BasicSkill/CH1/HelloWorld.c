@@ -29,7 +29,7 @@ int main()
     float b=52.11;
     double c=15.32;
     char d='A';
-    printf("%d\n",22); 
+    printf("%d\n",22);
     printf("%d\n",a);
     printf("%f\n",b);
     printf("%f\n",c);
@@ -175,7 +175,7 @@ $ gcc –c hello.s –o hello.o //compile & assemble
 $ gcc hello.o -o hello.out  //compile & assemble & link   
 
 shared-build:
-$ gcc -c -Wall -Werror -fPIC Cshared.c  
+$ gcc -c -Wall -Werror -fPIC Cshared.c  #PIC aka Position-Independent Code
 $ gcc -shared -o libCshared.so Cshared.o 
 $ gcc -l Cshared -o Crunner.out Crunner.c 
 $ ldd Crunner.out //show the shared object that program uses
