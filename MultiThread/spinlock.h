@@ -6,7 +6,7 @@ typedef struct spinlock
 
 void lock(spinlock_t *lock)
 {
-    while(xchg(lock−>lock, 1) != 0);
+    while(xchg(lock->lock, 1) != 0);
 }
 void unlock(spinlock_t *lock)
 {
