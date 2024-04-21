@@ -112,7 +112,7 @@ int main()
                 .title="english",
                 .hours=40.0
             }; //using member to declare & initialize
-    struct course important=math; //assign a structure  
+    struct course important=math; //assign a structure
     //modify value of member
     math.hours=50.0;
     strcpy(math.title,"mathematics"); 
@@ -182,7 +182,7 @@ int main()
     for(int i=0;i<10;i++){printf("%d\t",num[i].int_num);}
     printf("\n");
     union val diff[3]; //array of union in different data type
-    diff[0].int_num=123; 
+    diff[0].int_num=123;
     diff[1].fl_num=98.76;
     strcpy(diff[2].str,"hello");
     printf("%d\n",diff[0].int_num);
