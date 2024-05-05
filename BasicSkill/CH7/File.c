@@ -22,7 +22,7 @@ int main()
         printf("Error in opening file");
         return -1; //force to stop
     }
-    fclose(fptr); //return 0 if close successful, return EOF if close error
+    fclose(fptr); //return 0 if close successful, return -1 if close error
     #endif
     
     /******************************************/
@@ -154,10 +154,11 @@ int main()
         //ERANGE 34: error when range is out of memory
     /*stderr*/
         //file stream "standard error output" for error code
+
     /*strerror*/
         //get more message for error code by string.h
     /*perror*/
-        //get more message for error code
+        //get more message for error code with specific print cmd
     #if 0
     errno=0; //set 0 before calling lib func
     fptr=fopen("C:\\Users\\Kevin\\Desktop\\nonexit.txt","r");

@@ -62,7 +62,7 @@ int main()
         //it called token pasting operator
         //it append(past) token together as name of variable
     #define TO_STR(x) #x
-    printf("convert to string %s\n",TO_STR(123\\12));
+    printf("convert to string %s\n",TO_STR(123\\12)); //convert to string 123\12
     #define VAR(name,num) name##num
     int x1=125,x2=250,x3=500;
     printf("pasting together to display value %d\n",VAR(x,1)); 
