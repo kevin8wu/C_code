@@ -61,7 +61,7 @@ int main()
         pthread_mutex_init(pthread_mutex_t *m, const pthread_mutexattr_t *a)
         const pthread_mutexattr_t *a: used for const unsigned int *attribute
     */
-    pthread_mutex_init (&mutex1, 0);
+    pthread_mutex_init(&mutex1, 0);
 #endif
     pthread_create(&thread3, NULL, counting, (void*)&index1);
     pthread_create(&thread4, NULL, counting, (void*)&index2);
