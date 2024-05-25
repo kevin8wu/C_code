@@ -4,6 +4,9 @@
         "string_view": "c",
         "initializer_list": "c",
         "utility": "c",
-        "stdlib.h": "c"
+        "stdlib.h": "c",
+        "__mutex_base": "cpp",
+        "mutex": "cpp",
+        "__locale": "cpp"
     }
 }
