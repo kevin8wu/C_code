@@ -40,6 +40,7 @@ int main()
     //__OBJC__      define 1 if file use Object-C compiler
     //__ASSEMBLER__ define 1 if file use preprocess assembly
     //__VERSION__   return version of compiler
+    //__FUNCTION__ the current function name as string
     char curr_date[12];
     char curr_time[10];
     int std_c;

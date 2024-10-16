@@ -6,6 +6,14 @@
 
 #include "pthread_basis.h"
 
+/*
+互斥鎖 (Mutex): 確保一次只有一個執行緒可以存取共享資源。
+信號量 (Semaphore): 控制同時存取共享資源的執行緒數量。
+條件變數 (Condition Variable): 允許執行緒等待特定條件發生。
+無鎖數據結構 (Lock-free data structures): 設計不需要鎖的數據結構，以提高性能和避免死鎖。
+謹慎使用原子操作: 對於簡單的讀寫操作，可以使用原子操作來避免鎖的開銷。
+*/
+
 /* Mutex
    to make sure the specific section of code can
    only be executed at one between multi-threads
