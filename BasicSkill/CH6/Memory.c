@@ -29,7 +29,7 @@ int main()
     //realloc(ptr,bytes) //resize the memory and return to a pointer
     //free(ptr) //release the block of memory pointed by ptr
     int *ptr;
-    ptr=malloc(10*sizeof(*ptr)); //initialize by zero
+    ptr=malloc(10*sizeof(*ptr)); //maybe not initialize by zero
     if(ptr!=NULL){*(ptr+2)=50;printf("%d\n",*(ptr+2));}
     ptr=realloc(ptr,100*sizeof(*ptr)); //leave the origin data in memory
     *(ptr+30)=75;printf("%d %d\n",*(ptr+2),*(ptr+30));
